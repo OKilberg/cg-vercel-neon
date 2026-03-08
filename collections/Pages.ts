@@ -1,3 +1,4 @@
+import { revalidateTag } from "next/cache";
 import type { Block, CollectionConfig } from "payload";
 
 const HeadersBlock: Block = {
@@ -48,6 +49,18 @@ export const Pages: CollectionConfig = {
   },
   admin: {
     useAsTitle: "page-route",
+  },
+  hooks: {
+    afterChange: [
+      () => {
+        revalidateTag("pages", "max");
+      },
+    ],
+    afterDelete: [
+      () => {
+        revalidateTag("pages", "max");
+      },
+    ],
   },
   fields: [
     {
