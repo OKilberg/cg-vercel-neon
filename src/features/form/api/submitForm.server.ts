@@ -28,10 +28,10 @@ const submitForm = async (initialState: any, formData: FormData) => {
   const { name, email, service } = data;
 
   const response = await resend.emails.send({
-    from: "onboarding@resend.dev",
-    to: "oscar.oravakilberg@gmail.com",
-    subject: service,
-    html: `<p>Congrats on sending your <strong>first email</strong>, ${name}!</p>`,
+    from: "contact@frontoship.com",
+    to: email,
+    subject: `Order of ${service} from frontoship`,
+    html: `<p>Congrats on ordering <strong>${service}</strong>, ${name}!</p>`,
   });
 
   if (response.error) {
